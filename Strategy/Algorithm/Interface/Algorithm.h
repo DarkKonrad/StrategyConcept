@@ -16,10 +16,10 @@ namespace Algorithm
 		{
 			public:
 			template<typename Iterator,typename Comparator> requires RandomAccessIterator<Iterator> || Comparable<Comparator>
-			virtual void sort(Iterator begin, Iterator end,Comparator comparator) = 0;
+				void sort(Iterator begin, Iterator end, Comparator comparator);
+			
+
 		};
-
-
 
 
 	}

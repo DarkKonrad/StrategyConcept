@@ -90,7 +90,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnableModules>true</EnableModules>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,7 +106,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnableModules>true</EnableModules>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,8 +150,12 @@
     <ClCompile Include="Platform\TestPlatform.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Algorithms\IAlgorithm.h" />
-    <ClInclude Include="Algorithms\IComparable.h" />
+    <ClInclude Include="Algorithm\Algorithms\HeapSort.h" />
+    <ClInclude Include="Algorithm\Algorithms\QuickSort.h" />
+    <ClInclude Include="Algorithm\Interface\Algorithm.h" />
+    <ClInclude Include="Algorithm\Interface\Concepts\Comparable.h" />
+    <ClInclude Include="Algorithm\Interface\Concepts\Iterable.h" />
+    <ClInclude Include="Algorithm\Interface\Concepts\RandomAccesIterator.h" />
     <ClInclude Include="Platform\TestPlatform.h" />
     <ClInclude Include="Strategy\IStrategy.h" />
   </ItemGroup>

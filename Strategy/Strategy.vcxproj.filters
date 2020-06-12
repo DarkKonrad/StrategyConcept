@@ -29,10 +29,22 @@
     <ClInclude Include="Strategy\IStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Algorithms\IAlgorithm.h">
+    <ClInclude Include="Algorithm\Interface\Concepts\Comparable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Algorithms\IComparable.h">
+    <ClInclude Include="Algorithm\Interface\Concepts\Iterable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm\Interface\Concepts\RandomAccesIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm\Interface\Algorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm\Algorithms\QuickSort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm\Algorithms\HeapSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

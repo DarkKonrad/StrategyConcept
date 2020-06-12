@@ -13,7 +13,5 @@ namespace Algorithm
 			{ std::begin(container) };
 			{ std::end(container) };
 		};
-
-		// Concept Random Acces iterator ? | Begin End
 	}
 }
