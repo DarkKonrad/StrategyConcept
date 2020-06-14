@@ -4,6 +4,8 @@
 #include "../../Algorithm/Interface/Concepts/Iterable.h"
 namespace Strategy
 {
+	template<class DataType, class DataSetType> requires Algorithm::Interface::Iterable<DataSetType>
+	class Interface::IStrategy;
 	
 	template<class DataType>
 	struct DefaultQuickSortComparator : public Interface::Comparator<DataType>
@@ -14,19 +16,19 @@ namespace Strategy
 		}
 	};
 
-	template<class DataType, class DataSet> requires Algorithm::Interface::Iterable<DataSet>
-	class QuickSortStrategy : public Interface::IStrategy<DataType, DataSet>
+	template<class DataType, class DataSetType> requires Algorithm::Interface::Iterable<DataSetType>
+	class QuickSortStrategy : public Interface::IStrategy<DataType, DataSetType>
 	{
 		private:
 		QuickSortStrategy() {}
 
 		public:
-		QuickSortStrategy(DataSet dataSet, Comparator<DataType>* comparator = new DefaultQuickSortComparator):
-			IStrategy(dataSet,comparator){}
+		QuickSortStrategy(DataSetType const& dataSet, Interface::Comparator<DataType>* comparator = new DefaultQuickSortComparator<DataType>):
+			Interface::IStrategy<DataType,DataSetType>(dataSet,comparator){}
 
 		virtual void executeAlgorithm()
 		{
-			Algorithm::QuickSort::sort(this->dataSet.begin(), this->dataSet.end(), this->comparator);
+			Algorithm::QuickSort::sort(this->dataSet.begin(), this->dataSet.end(), *(this->comparator));
 		}
 	};
 }

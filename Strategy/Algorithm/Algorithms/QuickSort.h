@@ -11,40 +11,39 @@ namespace Algorithm
 		public:
 
 			template<typename Iterator, typename Comparator> requires Interface::RandomAccessIterator<Iterator> 
-				static void sort(Iterator const& begin, Iterator const& end, Comparator const& comparator);
+				static void sort(Iterator const& begin, Iterator const& end, Comparator& comparator);
 
 		private:
 
 			template<typename Iterator, typename Comparator> requires Interface::RandomAccessIterator<Iterator> 
-				static Iterator partition(Iterator const& begin, Iterator const& end, Comparator const& comparator);
+				static Iterator partition(Iterator const& begin, Iterator const& end, Comparator& comparator);
 	};
 
 	template<typename Iterator, typename Comparator> requires Interface::RandomAccessIterator<Iterator> 
-	void QuickSort::sort(Iterator const& begin, Iterator const& end, Comparator const& comparator)
+	void QuickSort::sort(Iterator const& begin, Iterator const& end, Comparator& comparator)
 	{
 		if (std::distance(begin,end)>1)
 		{
 			auto boundry = partition(begin, end, comparator);
-			QuickSort(begin, end, comparator);
-			QuickSort(boundry + 1, endy, comparator);
+			sort(begin, end, comparator);
+			sort(boundry + 1, end, comparator);
 		}
 
 	}
 
 	template<typename Iterator, typename Comparator> requires Interface::RandomAccessIterator<Iterator> 
-    Iterator partition(Iterator const& begin, Iterator const& end, Comparator const& comparator)
+    Iterator QuickSort::partition(Iterator const& begin, Iterator const& end, Comparator& comparator)
 	{
-		auto pivot = std::prev(last, 1);
+		auto pivot = std::prev(end, 1);
 		auto i = begin;
 
 		for (auto it = begin; it != pivot; it++)
 		{
-			if (comparator(*j, *pivot))
+			if (comparator(*it, *pivot))
 			{
-				std::swap(*it++, *j);
+				std::swap(*i++, *it);
 			}
 		}
-
 		std::swap(*i, *pivot);
 		return i;
 	}

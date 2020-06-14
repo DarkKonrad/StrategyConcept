@@ -15,27 +15,25 @@ namespace Strategy
 	namespace Interface
 	{
 		template<class DataType>
-		struct BaseComparator
+		struct IBaseComparator
 		{
 			virtual bool operator()(DataType lhs, DataType rhs) = 0;
 		};
 		
 		template<class DataType>
-		using Comparator = BaseComparator<DataType>;
+		using Comparator = IBaseComparator<DataType>;
 
 		template<class DataType,class DataSet> requires Algorithm::Interface::Iterable<DataSet>
 		class IStrategy
 		{
-			private:
+			protected:
+				IStrategy() {}
 				Comparator<DataType>* comparator;
 				DataSet dataSet;
-				
-				IStrategy(){}
-			
-			public:
 
+			public:
 				// Comparator is functor which provides comparation method for algorithm
-				IStrategy(DataSet dataSet,Comparator<DataType> comparator): dataSet(dataSet), comparator(comparator) {}
+				IStrategy(DataSet dataSet,Comparator<DataType>* comparator = nullptr): dataSet(dataSet), comparator(comparator) {}
 
 				virtual ~IStrategy() { delete comparator; }
 				virtual void executeAlgorithm() = 0;

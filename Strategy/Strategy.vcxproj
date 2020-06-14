@@ -157,7 +157,8 @@
     <ClInclude Include="Algorithm\Interface\Concepts\Iterable.h" />
     <ClInclude Include="Algorithm\Interface\Concepts\RandomAccesIterator.h" />
     <ClInclude Include="Platform\TestPlatform.h" />
-    <ClInclude Include="Strategy\IStrategy.h" />
+    <ClInclude Include="Strategy\ConcreteStrategy\QuickSortStrategy.h" />
+    <ClInclude Include="Strategy\Interface\IStrategy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
