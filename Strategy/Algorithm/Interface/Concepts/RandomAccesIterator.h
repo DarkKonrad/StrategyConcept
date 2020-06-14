@@ -1,6 +1,4 @@
 #pragma once
-#pragma once
-#include <concepts>
 #include <iterator>
 
 namespace Algorithm

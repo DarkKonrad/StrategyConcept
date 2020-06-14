@@ -17,5 +17,7 @@ void main()
 	for (auto it = std::begin(foo); it != std::end(foo); ++it)
 		bar.push_back(*it);
 
-	Strategy::QuickSortStrategy<int, vector<int>> quick(bar);
+	Strategy::QuickSortStrategy<vector<int>, int> quick(&bar);
+	//quick.executeAlgorithm();
+
 }

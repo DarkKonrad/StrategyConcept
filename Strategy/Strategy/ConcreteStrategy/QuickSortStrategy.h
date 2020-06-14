@@ -1,34 +1,32 @@
 #pragma once
+#include "../../Algorithm/Execution/AlgorithmExecutor.h"
 #include "../Interface/IStrategy.h"
 #include "../../Algorithm/Algorithms/QuickSort.h"
 #include "../../Algorithm/Interface/Concepts/Iterable.h"
+
+
+
+
 namespace Strategy
 {
-	template<class DataType, class DataSetType> requires Algorithm::Interface::Iterable<DataSetType>
-	class Interface::IStrategy;
-	
-	template<class DataType>
-	struct DefaultQuickSortComparator : public Interface::Comparator<DataType>
+	template<class DataSetType, class DataType>
+	class QuickSortStrategy : public Interface::IStrategy<DataSetType>
 	{
-		virtual bool operator()(DataType lhs, DataType rhs) override
-		{
-			return lhs < rhs;
-		}
-	};
-
-	template<class DataType, class DataSetType> requires Algorithm::Interface::Iterable<DataSetType>
-	class QuickSortStrategy : public Interface::IStrategy<DataType, DataSetType>
-	{
-		private:
+	private:
 		QuickSortStrategy() {}
+		Algorithm::AlgorithmExecutor<DataSetType, DataType> algorithmExecutor;
 
-		public:
-		QuickSortStrategy(DataSetType const& dataSet, Interface::Comparator<DataType>* comparator = new DefaultQuickSortComparator<DataType>):
-			Interface::IStrategy<DataType,DataSetType>(dataSet,comparator){}
+	public:
+		QuickSortStrategy(DataSetType* object) : algorithmExecutor(object) {}
+		void setDataSet(DataSetType* object) { algorithmExecutor.setDataSet(object); }
 
-		virtual void executeAlgorithm()
+		virtual void ExecuteAlgorithm() override
 		{
-			Algorithm::QuickSort::sort(this->dataSet.begin(), this->dataSet.end(), *(this->comparator));
+			algorithmExecutor.ExecuteQuickSort();
+		}
+		virtual void ExecuteAlgorithm(std::function<bool(DataType left, DataType right)> comparator) 
+		{
+			algorithmExecutor.ExecuteQuickSort(comparator);
 		}
 	};
 }

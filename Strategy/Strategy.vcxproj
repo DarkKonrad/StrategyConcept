@@ -152,8 +152,9 @@
   <ItemGroup>
     <ClInclude Include="Algorithm\Algorithms\HeapSort.h" />
     <ClInclude Include="Algorithm\Algorithms\QuickSort.h" />
-    <ClInclude Include="Algorithm\Interface\Algorithm.h" />
+    <ClInclude Include="Algorithm\Execution\AlgorithmExecutor.h" />
     <ClInclude Include="Algorithm\Interface\Concepts\Comparable.h" />
+    <ClInclude Include="Algorithm\Interface\Concepts\ComparatorFunctor.h" />
     <ClInclude Include="Algorithm\Interface\Concepts\Iterable.h" />
     <ClInclude Include="Algorithm\Interface\Concepts\RandomAccesIterator.h" />
     <ClInclude Include="Platform\TestPlatform.h" />
