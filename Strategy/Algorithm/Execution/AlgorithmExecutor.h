@@ -54,7 +54,7 @@ namespace Algorithm
 		template<class Algorithm>
 		inline void AlgorithmExecutor<DataSetObjectType, DataType>::Execute(std::function<bool(DataType left, DataType right)>comparator)
 		{
-			Algorithm::sort(object->begin(), object->end(), comparator);
+			Algorithm::sort(std::begin(*object), std::end(*object), comparator);
 		}
 
 		//Uses deafult Comparator 'lhs < rhs';

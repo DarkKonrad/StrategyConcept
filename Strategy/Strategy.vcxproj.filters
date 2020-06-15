@@ -41,16 +41,13 @@
     <ClInclude Include="Algorithm\Algorithms\HeapSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Strategy\Interface\IStrategy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Strategy\ConcreteStrategy\QuickSortStrategy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Algorithm\Interface\Concepts\ComparatorFunctor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Algorithm\Execution\AlgorithmExecutor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Strategy\AlgorithmStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
