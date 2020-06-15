@@ -12,17 +12,17 @@ namespace Algorithm
 		public:
 
 			template<typename Iterator, typename Comparator> requires Interface::RandomAccessIterator<Iterator> 
-				static void sort(Iterator const&  begin, Iterator const&  end, Comparator const& comparator);
+				static void sort(Iterator const&  begin, Iterator const&  end, Comparator& comparator);
 
 		private:
 
 			template<typename Iterator, typename Comparator> requires Interface::RandomAccessIterator<Iterator> 
-				static Iterator partition(Iterator const&  begin, Iterator const& end,Comparator const& comparator);
+				static Iterator partition(Iterator const&  begin, Iterator const& end,Comparator& comparator);
 	};
 
 	
 	template<typename Iterator, typename Comparator> requires Interface::RandomAccessIterator<Iterator>
-		Iterator QuickSort::partition(Iterator const& begin, Iterator const& end, Comparator const& comparator)
+		Iterator QuickSort::partition(Iterator const& begin, Iterator const& end, Comparator& comparator)
 		{
 			auto pivot = std::prev(end, 1);
 			auto i = begin;
@@ -40,7 +40,7 @@ namespace Algorithm
 	
 	
 	template<typename Iterator, typename Comparator> requires Interface::RandomAccessIterator<Iterator> 
-	void QuickSort::sort(Iterator const& begin, Iterator const& end, Comparator const& comparator)
+	void QuickSort::sort(Iterator const& begin, Iterator const& end, Comparator& comparator)
 	{
 		if (std::distance(begin,end)>1)
 		{

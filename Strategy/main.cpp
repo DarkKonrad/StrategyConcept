@@ -16,6 +16,19 @@ void showCollection(Iterable_Col const& item)
 	}
 		
 }
+
+bool comparefunc(int a, int b)
+{
+	return a < b;
+}
+
+struct myCompar
+{
+	bool operator ()(int a,int b)
+	{
+		return a > b;
+	}
+};
 void main()
 {
 	int foo[] = { 10,20,30,40,50 };
@@ -34,6 +47,12 @@ void main()
 
 	strategy.Execute(&vec, std::greater<int>());
 
+	showCollection(vec);
+
+	strategy.Execute(&vec, myCompar());
+	showCollection(vec);
+
+	strategy.Execute(&vec, comparefunc);
 	showCollection(vec);
 	//Algorithm::QuickSort::sort(std::begin(vec), std::end(vec), std::less<int>());
 	
