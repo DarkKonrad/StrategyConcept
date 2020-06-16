@@ -40,6 +40,9 @@ template<typename DataSetType, typename DataType> requires Algorithm::Interface:
 			case StrategyType::QuickSort:
 				algorithmExecutor.ExecuteQuickSort();
 				break;
+			case StrategyType::HeapSort:
+				algorithmExecutor.ExecuteHeapSort();
+				break;
 			default:
 				break;
 		}
@@ -58,6 +61,9 @@ template<typename Comparator> requires Algorithm::Interface::ComparatorFunctor<C
 			case StrategyType::QuickSort:
 				algorithmExecutor.ExecuteQuickSort(comparator);
 				break;
+			case StrategyType::HeapSort:
+				algorithmExecutor.ExecuteHeapSort(comparator);
+				break;
 			default:
 				break;
 		}
@@ -72,6 +78,9 @@ template<typename Comparator> requires Algorithm::Interface::ComparatorFunctor<C
 			{
 				case StrategyType::QuickSort:
 					algorithmExecutor.ExecuteQuickSort(comparator);
+					break;
+				case StrategyType::HeapSort :
+					algorithmExecutor.ExecuteHeapSort(comparator);
 					break;
 				default:
 					break;

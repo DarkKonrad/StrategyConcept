@@ -33,29 +33,32 @@ void main()
 {
 	int foo[] = { 10,20,30,40,50 };
 	vector<int> bar;
-	vector<int> vec = { 0, 9, 7, 3, 2, 5, 6, 4, 1, 8 };
+	vector<int> vec = { 999, 9, 7, 3, 2, 5, 6, 4, 1, 8 };
 	// iterate foo: inserting into bar
 	for (auto it = std::begin(foo); it != std::end(foo); ++it)
 		bar.push_back(*it);
 	
-	showCollection(vec);
+	//showCollection(vec);
     
 	AlgorithmStrategy<vector<int>, int> strategy;
-	strategy.Execute(&vec);
+	strategy.setStrategy(StrategyType::HeapSort);
+	//strategy.Execute(&vec);
 	
 	showCollection(vec);
-
-	strategy.Execute(&vec, std::greater<int>());
+	
+	strategy.Execute(&vec);
 
 	showCollection(vec);
 
-	strategy.Execute(&vec, myCompar());
-	showCollection(vec);
+	//strategy.Execute(&vec, myCompar());
+	//showCollection(vec);
 
-	strategy.Execute(&vec, comparefunc);
-	showCollection(vec);
+	//strategy.Execute(&vec, comparefunc);
+	//showCollection(vec);
 	//Algorithm::QuickSort::sort(std::begin(vec), std::end(vec), std::less<int>());
 	
 	//quick.executeAlgorithm();
+
+	getchar();
 
 }

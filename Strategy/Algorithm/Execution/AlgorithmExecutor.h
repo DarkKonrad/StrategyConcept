@@ -1,12 +1,13 @@
 #pragma once
-#include <iterator>
-#include <algorithm>
 #include "../Interface/Concepts/Iterable.h"
 #include "../Interface/Concepts/ComparatorFunctor.h"
 #include "../Interface/Concepts/RandomAccesIterator.h"
 #include "../Algorithms/QuickSort.h"
+#include "../Algorithms/HeapSort.h"
 
 #include <functional>
+#include <iterator>
+#include <algorithm>
 
 namespace Algorithm
 {
@@ -37,6 +38,14 @@ namespace Algorithm
 			void ExecuteQuickSort(std::function<bool(DataType left, DataType right)> comparator);  // Wondering if compiler will lost 
 			
 			void ExecuteQuickSort();
+
+
+			template<class Comparator>
+			void ExecuteHeapSort(Comparator comparator);
+
+			void ExecuteHeapSort(std::function<bool(DataType left, DataType right)> comparator);  // Wondering if compiler will lost 
+
+			void ExecuteHeapSort();
 
 		};
 
@@ -77,5 +86,26 @@ namespace Algorithm
 		inline void AlgorithmExecutor<DataSetObjectType, DataType>::ExecuteQuickSort(Comparator comparator) 
 		{
 			Execute<QuickSort>(comparator);
+		}
+
+		template<typename DataSetObjectType, typename DataType> requires Interface::Iterable<DataSetObjectType>
+		inline void AlgorithmExecutor<DataSetObjectType, DataType>::ExecuteHeapSort()
+		{
+			Execute<HeapSort>(std::greater<DataType>());
+			
+		}
+
+		template<typename DataSetObjectType, typename DataType> requires Interface::Iterable<DataSetObjectType>
+		inline void AlgorithmExecutor<DataSetObjectType, DataType>::ExecuteHeapSort(std::function<bool(DataType left, DataType right)>comparator)
+		{
+			Execute<HeapSort>(comparator);
+		}
+
+		template<typename DataSetObjectType, typename DataType> requires Interface::Iterable<DataSetObjectType>
+			
+		template<class Comparator> 
+		inline void AlgorithmExecutor<DataSetObjectType, DataType>::ExecuteHeapSort(Comparator comparator) 
+		{
+			Execute<HeapSort>(comparator);
 		}
 }
